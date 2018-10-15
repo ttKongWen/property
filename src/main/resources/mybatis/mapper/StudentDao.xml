@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ilovecl.demo.dao.StudentDao">
+    <select id="queryById" resultType="com.ilovecl.demo.entity.Student">
+        SELECT * FROM student WHERE id = #{id}
+    </select>
+
+    <select id="queryByEmail" resultType="com.ilovecl.demo.entity.Student">
+        SELECT * FROM student WHERE email = #{email}
+    </select>
+
+    <select id="queryByName" resultType="com.ilovecl.demo.entity.Student">
+        SELECT * FROM student WHERE name = #{name}
+    </select>
+
+    <select id="queryAll" resultSets="List" resultType="com.ilovecl.demo.entity.Student">
+        SELECT * FROM student
+    </select>
+
+    <insert id="add" parameterType="com.ilovecl.demo.entity.Student" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO student (id, name, password, sexual, email, phone)
+        VALUE (#{id}, #{name}, #{password}, #{sexual}, #{email}, #{phone})
+    </insert>
+
+    <update id="update" parameterType="com.ilovecl.demo.entity.Student">
+        UPDATE student SET
+        name=#{name},
+        password=#{password},
+        sexual=#{sexual},
+        email=#{email},
+        phone=#{phone}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.ilovecl.demo.entity.Student">
+        DELETE FROM student WHERE id=#{id}
+    </delete>
+</mapper>

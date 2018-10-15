@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ilovecl.demo.dao.MaintenanceDao">
+    <select id="queryById" resultType="com.ilovecl.demo.entity.Maintenance">
+        SELECT * FROM maintenance WHERE id = #{id}
+    </select>
+
+    <select id="queryByRepairId" resultType="com.ilovecl.demo.entity.Maintenance">
+        SELECT * FROM maintenance WHERE repairId = #{repairId}
+    </select>
+
+    <select id="queryAll" resultSets="List" resultType="com.ilovecl.demo.entity.Maintenance">
+        SELECT * FROM maintenance
+    </select>
+
+    <insert id="add" parameterType="com.ilovecl.demo.entity.Maintenance" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO maintenance (repairId, technicianId, startTime)
+        VALUE (#{repairId}, #{technicianId}, #{startTime})
+    </insert>
+
+    <delete id="delete" parameterType="com.ilovecl.demo.entity.Maintenance">
+        DELETE FROM maintenance WHERE id=#{id}
+    </delete>
+</mapper>

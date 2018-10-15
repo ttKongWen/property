@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ilovecl.demo.dao.RepairDao">
+    <select id="queryById" resultType="com.ilovecl.demo.entity.Repair">
+        SELECT * FROM repair WHERE id = #{id}
+    </select>
+
+    <select id="queryByStudentId" resultSets="List" resultType="com.ilovecl.demo.entity.Repair">
+        SELECT * FROM repair WHERE studentId = #{studentId}
+    </select>
+
+    <select id="queryAll" resultSets="List" resultType="com.ilovecl.demo.entity.Repair">
+        SELECT * FROM repair
+    </select>
+
+    <insert id="add" parameterType="com.ilovecl.demo.entity.Repair" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO repair (status, detail, place, picMD5, submitTime, studentId)
+        VALUE (#{status}, #{detail}, #{place}, #{picMD5}, #{submitTime}, #{studentId})
+    </insert>
+
+    <delete id="delete" parameterType="com.ilovecl.demo.entity.Repair">
+        DELETE FROM repair WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="com.ilovecl.demo.entity.Repair">
+        UPDATE repair SET
+        status=#{status},
+        detail=#{detail},
+        place=#{place},
+        picMD5=#{picMD5},
+        submitTime=#{submitTime},
+        studentId=#{studentId}
+        WHERE id=#{id}
+    </update>
+
+</mapper>

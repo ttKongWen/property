@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ilovecl.demo.dao.UrgentRepairDao">
+    <select id="queryById" resultType="com.ilovecl.demo.entity.UrgentRepair">
+        SELECT * FROM urgentrepair WHERE id = #{id}
+    </select>
+
+    <select id="queryByRepairId" resultType="com.ilovecl.demo.entity.UrgentRepair">
+        SELECT * FROM urgentrepair WHERE repairId = #{repairId}
+    </select>
+
+    <select id="queryByStudentId" resultSets="List" resultType="com.ilovecl.demo.entity.UrgentRepair">
+        SELECT * FROM urgentrepair WHERE studentId = #{studentId}
+    </select>
+
+    <select id="queryAll" resultSets="List" resultType="com.ilovecl.demo.entity.UrgentRepair">
+        SELECT * FROM urgentrepair
+    </select>
+
+    <insert id="add" parameterType="com.ilovecl.demo.entity.UrgentRepair" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO urgentrepair (status, repairId, studentId, createTime)
+        VALUE (#{status}, #{repairId}, #{studentId}, #{createTime})
+    </insert>
+
+    <delete id="delete" parameterType="com.ilovecl.demo.entity.UrgentRepair">
+        DELETE FROM urgentrepair WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="com.ilovecl.demo.entity.UrgentRepair">
+        UPDATE urgentrepair SET
+        status=#{status},
+        repairId=#{repairId},
+        studentId=#{studentId},
+        createTime=#{createTime}
+        WHERE id=#{id}
+    </update>
+
+</mapper>

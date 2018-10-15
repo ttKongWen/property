@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ilovecl.demo.dao.AdminDao">
+    <select id="queryById" resultType="com.ilovecl.demo.entity.Admin">
+        SELECT * FROM admin WHERE id = #{id}
+    </select>
+
+    <select id="queryByName" resultType="com.ilovecl.demo.entity.Admin">
+        SELECT * FROM admin WHERE userName = #{userName}
+    </select>
+
+    <select id="queryByEmail" resultType="com.ilovecl.demo.entity.Admin">
+        SELECT * FROM admin WHERE email = #{email}
+    </select>
+
+    <select id="queryAll" resultSets="List" resultType="com.ilovecl.demo.entity.Admin">
+        SELECT * FROM admin
+    </select>
+</mapper>

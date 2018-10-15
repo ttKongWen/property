@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ilovecl.demo.dao.TechnicianDao">
+    <select id="queryById" resultType="com.ilovecl.demo.entity.Technician">
+        SELECT * FROM technician WHERE id = #{id}
+    </select>
+
+    <select id="queryAll" resultSets="List" resultType="com.ilovecl.demo.entity.Technician">
+        SELECT * FROM technician
+    </select>
+
+    <insert id="addTechnician" parameterType="com.ilovecl.demo.entity.Technician"
+            keyProperty="id">
+        INSERT INTO technician (name,number,phone)
+        VALUE (#{name},#{number},#{phone})
+    </insert>
+
+    <delete id="delete" parameterType="com.ilovecl.demo.entity.Technician">
+        DELETE FROM technician WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="com.ilovecl.demo.entity.Technician">
+        UPDATE technician SET
+        name=#{name}
+        WHERE id=#{id}
+    </update>
+</mapper>
